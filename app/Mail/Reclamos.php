@@ -26,6 +26,6 @@ class Reclamos extends Mailable
     public function build()
     {
         return $this->view('emails.reclamos')
-            ->subject('Hoja de Reclamación Virtual - DELTAPACK');
+            ->subject('Hoja de Reclamación Virtual - IMPORTACIONES DELTA PERU S.A.C');
     }
 }

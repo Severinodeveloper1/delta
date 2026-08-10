@@ -9,7 +9,7 @@
                             alt="Delta Logo">
                     @else
                         <span class="text-2xl font-extrabold tracking-tight text-primary">
-                            DELTA<span class="text-accent">PACK</span>
+                            IMPORTACIONES <span class="text-accent">DELTA</span>
                         </span>
                     @endif
                 </a>

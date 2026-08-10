@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ isset($title) ? $title . ' - ' : '' }}{{ config('app.name', 'DELTAPACK') }}</title>
+    <title>{{ isset($title) ? $title . ' - ' : '' }}{{ config('app.name', 'IMPORTACIONES DELTA PERU S.A.C') }}</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -167,7 +167,8 @@
 
                     <!-- Panel Footer -->
                     <div class="px-4 pb-3 pt-1 text-center border-t border-slate-50">
-                        <p class="text-[10px] text-slate-400">Disponible: {{ $companyInfo->horario ?? 'Lun–Vie 9am–5pm' }}</p>
+                        <p class="text-[10px] text-slate-400">Disponible:
+                            {{ $companyInfo->horario ?? 'Lun–Vie 9am–5pm' }}</p>
                     </div>
                 </div>
             </div>
@@ -178,13 +179,15 @@
             <button type="button" id="wa-toggle-btn" title="Contáctanos por WhatsApp"
                 class="wa-btn-color relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer">
                 <!-- Ping animation ring -->
-                <span class="absolute inline-flex w-full h-full rounded-full wa-primary-bg opacity-30 animate-ping"></span>
+                <span
+                    class="absolute inline-flex w-full h-full rounded-full wa-primary-bg opacity-30 animate-ping"></span>
 
                 <!-- Icon default (WA logo) -->
                 <i id="wa-icon-open" class="fa-brands fa-whatsapp text-white text-3xl transition-all duration-200"></i>
 
                 <!-- Icon closed (X) -->
-                <i id="wa-icon-close" class="fa-solid fa-xmark text-white text-2xl wa-hidden transition-all duration-200"></i>
+                <i id="wa-icon-close"
+                    class="fa-solid fa-xmark text-white text-2xl wa-hidden transition-all duration-200"></i>
             </button>
         @else
             <!-- Direct Whatsapp backup if no specialists are configured -->
@@ -193,7 +196,8 @@
                     target="_blank" rel="noopener noreferrer" title="Contáctanos por WhatsApp"
                     class="wa-btn-color relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer">
                     <!-- Ping animation ring -->
-                    <span class="absolute inline-flex w-full h-full rounded-full wa-primary-bg opacity-30 animate-ping"></span>
+                    <span
+                        class="absolute inline-flex w-full h-full rounded-full wa-primary-bg opacity-30 animate-ping"></span>
 
                     <!-- Icon default (WA logo) -->
                     <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
