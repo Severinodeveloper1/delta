@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Evitar bucles de redirección si ya estamos dentro de /public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    
+    # Redirigir todas las solicitudes a la subcarpeta public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
