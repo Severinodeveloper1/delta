@@ -10,10 +10,18 @@ Route::get('/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/contacto', [HomeController::class, 'contacto'])->name('contacto');
 Route::get('/producto/{slug}', [HomeController::class, 'detalleProducto'])->name('producto.detalle');
 
-// Forms submit
-Route::post('/solicitar-cotizacion', [HomeController::class, 'enviar'])->name('cotizacion.enviar');
-Route::post('/contacto/enviar', [HomeController::class, 'enviarContacto'])->name('contacto.enviar');
-Route::post('/reclamo', [HomeController::class, 'correoReclamo'])->name('reclamo.enviar');
+// Forms submit with Rate Limiting (throttle to max 3 requests per minute per IP)
+Route::post('/solicitar-cotizacion', [HomeController::class, 'enviar'])
+    ->name('cotizacion.enviar')
+    ->middleware('throttle:3,1');
+
+Route::post('/contacto/enviar', [HomeController::class, 'enviarContacto'])
+    ->name('contacto.enviar')
+    ->middleware('throttle:3,1');
+
+Route::post('/reclamo', [HomeController::class, 'correoReclamo'])
+    ->name('reclamo.enviar')
+    ->middleware('throttle:3,1');
 
 // Catalog Shop
 Route::get('/tienda', [ShopController::class, 'index'])->name('tienda');

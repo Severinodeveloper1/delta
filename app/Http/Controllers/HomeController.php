@@ -104,11 +104,15 @@ class HomeController extends Controller
         $company = Company::first();
         $destinatario = $company?->correo_notificaciones ?? 'contacto@deltapack.pe';
 
-        Mail::send('emails.cotizacion', compact('datos'), function ($message) use ($datos, $destinatario) {
-            $message->to($destinatario)
-                    ->replyTo($datos['correo'], $datos['nombre'])
-                    ->subject('Nueva Solicitud de Cotización - ' . $datos['producto']);
-        });
+        try {
+            Mail::send('emails.cotizacion', compact('datos'), function ($message) use ($datos, $destinatario) {
+                $message->to($destinatario)
+                        ->replyTo($datos['correo'], $datos['nombre'])
+                        ->subject('Nueva Solicitud de Cotización - ' . $datos['producto']);
+            });
+        } catch (\Exception $e) {
+            \Log::error('Error de envío de correo en cotización: ' . $e->getMessage());
+        }
 
         return response()->json([
             'success' => true,
@@ -122,12 +126,17 @@ class HomeController extends Controller
     public function enviarContacto(Request $request)
     {
         $request->validate([
-            'nombre'       => 'required|max:100',
-            'empresa'      => 'nullable|max:150',
-            'telefono'     => 'required|max:30',
-            'correo'       => 'required|email',
+            'nombre'       => 'required|string|max:100|regex:/^[\pL\pN\s\.\,\-]+$/u',
+            'empresa'      => 'nullable|string|max:150|regex:/^[\pL\pN\s\.\,\-]+$/u',
+            'telefono'     => 'required|regex:/^[0-9]{1,12}$/',
+            'correo'       => 'required|email|max:150',
             'especialista' => 'required|exists:specialists,id',
-            'mensaje'      => 'required|max:3000'
+            'mensaje'      => 'required|string|max:3000|regex:/^[\pL\pN\s\.\,\-]+$/u',
+        ], [
+            'nombre.regex'   => 'El nombre no puede contener caracteres especiales.',
+            'empresa.regex'  => 'La empresa no puede contener caracteres especiales.',
+            'mensaje.regex'  => 'El mensaje no puede contener caracteres especiales.',
+            'telefono.regex' => 'El teléfono solo puede contener números (máximo 12 dígitos).',
         ]);
 
         $especialista = Specialist::findOrFail($request->especialista);
@@ -145,11 +154,15 @@ class HomeController extends Controller
         $company = Company::first();
         $destinatario = $company?->correo_notificaciones ?? 'contacto@deltapack.pe';
 
-        Mail::send('emails.contacto', compact('datos'), function ($mail) use ($datos, $destinatario) {
-            $mail->to($destinatario)
-                 ->replyTo($datos['correo'], $datos['nombre'])
-                 ->subject('Nueva Consulta Web - Asesoría Técnica');
-        });
+        try {
+            Mail::send('emails.contacto', compact('datos'), function ($mail) use ($datos, $destinatario) {
+                $mail->to($destinatario)
+                     ->replyTo($datos['correo'], $datos['nombre'])
+                     ->subject('Nueva Consulta Web - Asesoría Técnica');
+            });
+        } catch (\Exception $e) {
+            \Log::error('Error de envío de correo en contacto: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Su consulta fue enviada correctamente.');
     }
@@ -171,17 +184,25 @@ class HomeController extends Controller
     public function correoReclamo(Request $request)
     {
         $request->validate([
-            'nombre'            => 'required|string|max:150',
-            'tipo_doc'          => 'required|string',
-            'nro_doc'           => 'required|string',
-            'telefono'          => 'required|string',
-            'correo'            => 'required|email',
-            'domicilio'         => 'required|string',
-            'tipo_bien'         => 'required|string',
-            'descripcion_bien'  => 'required|string',
-            'tipo_solicitud'    => 'required|string',
-            'detalle_reclamo'   => 'required|string',
-            'pedido_consumidor' => 'required|string',
+            'nombre'            => 'required|string|max:150|regex:/^[\pL\pN\s\.\,\-]+$/u',
+            'tipo_doc'          => 'required|string|in:DNI,RUC,CE,Pasaporte',
+            'nro_doc'           => 'required|string|max:20|regex:/^[A-Za-z0-9\-]+$/',
+            'telefono'          => 'required|regex:/^[0-9]{1,12}$/',
+            'correo'            => 'required|email|max:150',
+            'domicilio'         => 'required|string|max:255|regex:/^[\pL\pN\s\.\,\#\-]+$/u',
+            'tipo_bien'         => 'required|string|in:Producto,Servicio',
+            'descripcion_bien'  => 'required|string|max:255|regex:/^[\pL\pN\s\.\,\-]+$/u',
+            'tipo_solicitud'    => 'required|string|in:Reclamo,Queja',
+            'detalle_reclamo'   => 'required|string|max:3000|regex:/^[\pL\pN\s\.\,\-]+$/u',
+            'pedido_consumidor' => 'required|string|max:3000|regex:/^[\pL\pN\s\.\,\-]+$/u',
+        ], [
+            'nombre.regex'            => 'El nombre no puede contener caracteres especiales.',
+            'nro_doc.regex'           => 'El número de documento solo puede contener letras, números y guiones.',
+            'telefono.regex'          => 'El teléfono solo puede contener números (máximo 12 dígitos).',
+            'domicilio.regex'         => 'El domicilio no puede contener caracteres especiales.',
+            'descripcion_bien.regex'  => 'La descripción del bien no puede contener caracteres especiales.',
+            'detalle_reclamo.regex'   => 'El detalle del reclamo no puede contener caracteres especiales.',
+            'pedido_consumidor.regex' => 'El pedido del consumidor no puede contener caracteres especiales.',
         ]);
 
         $correo = new Reclamos($request->all());

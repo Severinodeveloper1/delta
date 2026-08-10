@@ -102,7 +102,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Celular *</label>
-                        <input type="tel" name="telefono" required placeholder="Ej. 999 999 999" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded focus:border-accent focus:bg-white focus:outline-none transition-all">
+                        <input type="tel" name="telefono" required placeholder="Ej. 999999999" maxlength="12" pattern="[0-9]{1,12}" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,12)" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded focus:border-accent focus:bg-white focus:outline-none transition-all">
                     </div>
                     <div>
                         <label class="block text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Correo Corporativo *</label>
