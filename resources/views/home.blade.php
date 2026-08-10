@@ -8,7 +8,11 @@
             @forelse($banners as $banner)
                 <div class="swiper-slide relative h-full">
                     <!-- Background image -->
-                    <img src="{{ asset('storage/' . $banner->imagen) }}" alt="{{ $banner->nombre }}" class="absolute inset-0 w-full h-full object-cover">
+                    @if($banner->imagen && file_exists(public_path('storage/' . $banner->imagen)))
+                        <img src="{{ asset('storage/' . $banner->imagen) }}" alt="{{ $banner->nombre }}" class="absolute inset-0 w-full h-full object-cover">
+                    @else
+                        <div class="absolute inset-0 bg-slate-800 flex items-center justify-center opacity-40"></div>
+                    @endif
                     <!-- Dark overlay -->
                     <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/30"></div>
 
@@ -81,7 +85,7 @@
             @forelse($categories as $category)
                 <div class="group bg-white rounded-lg border border-slate-200 overflow-hidden shadow-premium hover:border-accent/40 transition-all duration-300 flex flex-col">
                     <div class="relative aspect-video overflow-hidden bg-slate-100">
-                        @if($category->imagen)
+                        @if($category->imagen && file_exists(public_path('storage/' . $category->imagen)))
                             <img src="{{ asset('storage/' . $category->imagen) }}" alt="{{ $category->nombre }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         @else
                             <div class="w-full h-full flex items-center justify-center text-slate-300 bg-slate-200">
@@ -130,7 +134,7 @@
                             $imagenes = is_array($product->imagenes) ? $product->imagenes : json_decode($product->imagenes, true);
                             $imagen = $imagenes[0] ?? 'no-image.png';
                         @endphp
-                        @if($imagen && $imagen !== 'no-image.png')
+                        @if($imagen && $imagen !== 'no-image.png' && file_exists(public_path('storage/' . $imagen)))
                             <img src="{{ asset('storage/' . $imagen) }}" alt="{{ $product->nombre }}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300">
                         @else
                             <div class="w-full h-full flex items-center justify-center bg-slate-200 text-slate-300">
@@ -227,7 +231,7 @@
         </div>
 
         <div class="relative min-h-[350px] md:min-h-full bg-slate-100">
-            @if(isset($seccion) && $seccion->imagen)
+            @if(isset($seccion) && $seccion->imagen && file_exists(public_path('storage/' . $seccion->imagen)))
                 <img src="{{ asset('storage/' . $seccion->imagen) }}" alt="Soporte Técnico" class="absolute inset-0 w-full h-full object-cover">
             @else
                 <div class="absolute inset-0 flex items-center justify-center text-slate-300 bg-slate-200">

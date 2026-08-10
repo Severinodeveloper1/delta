@@ -141,7 +141,7 @@
                                 class="wa-item-card flex items-center gap-3 p-3 rounded-xl cursor-pointer">
                                 <div
                                     class="w-11 h-11 rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex-shrink-0">
-                                    @if ($specialist->imagen && file_exists(public_path('storage/' . $specialist->imagen)))
+                                    @if ($specialist->imagen)
                                         <img src="{{ asset('storage/' . $specialist->imagen) }}"
                                             alt="{{ $specialist->nombre }}" class="w-full h-full object-cover">
                                     @else

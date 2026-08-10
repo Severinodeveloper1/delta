@@ -88,7 +88,7 @@
         </div>
 
         <div class="mt-12 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-            <p>© {{ date('Y') }} DELTAPACK S.A.C. Todos los derechos reservados.</p>
+            <p>© {{ date('Y') }} DELTAPACK S.A.C. @if(isset($company) && $company->ruc) - RUC: {{ $company->ruc }} @endif. Todos los derechos reservados.</p>
             <p>Hecho por: <a href="https://vesergenperu.com/" target="_blank" class="text-slate-400 hover:text-white transition-colors">Grupo VesergenPerú</a></p>
         </div>
     </div>

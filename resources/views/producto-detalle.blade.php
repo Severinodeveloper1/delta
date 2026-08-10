@@ -21,7 +21,7 @@
             
             <!-- Main Image Zoom container -->
             <div id="mainGallery" class="relative aspect-video rounded-xl bg-slate-50 border border-slate-200 overflow-hidden group cursor-crosshair">
-                @if($firstImagen && $firstImagen !== 'no-image.png')
+                @if($firstImagen && $firstImagen !== 'no-image.png' && file_exists(public_path('storage/' . $firstImagen)))
                     <img id="mainImage" src="{{ asset('storage/' . $firstImagen) }}" alt="{{ $product->nombre }}" class="w-full h-full object-cover transition-transform duration-500 origin-center">
                 @else
                     <div class="w-full h-full flex items-center justify-center bg-slate-200 text-slate-300">
@@ -42,9 +42,11 @@
             @if(count($imagenes) > 1)
                 <div class="grid grid-cols-5 gap-3">
                     @foreach($imagenes as $index => $img)
-                        <button type="button" class="thumb-item aspect-square rounded-lg border overflow-hidden transition-all {{ $index === 0 ? 'border-accent ring-1 ring-accent' : 'border-slate-200 hover:border-slate-300' }}" data-src="{{ asset('storage/' . $img) }}">
-                            <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" class="w-full h-full object-cover">
-                        </button>
+                        @if(file_exists(public_path('storage/' . $img)))
+                            <button type="button" class="thumb-item aspect-square rounded-lg border overflow-hidden transition-all {{ $index === 0 ? 'border-accent ring-1 ring-accent' : 'border-slate-200 hover:border-slate-300' }}" data-src="{{ asset('storage/' . $img) }}">
+                                <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" class="w-full h-full object-cover">
+                            </button>
+                        @endif
                     @endforeach
                 </div>
             @endif

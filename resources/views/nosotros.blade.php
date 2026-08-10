@@ -48,16 +48,16 @@
         <!-- Bento Grid Images -->
         <div class="hidden lg:grid grid-cols-2 gap-4">
             <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-sm">
-                <img src="{{ isset($nosotros) && $nosotros->imagen_1 ? asset('storage/' . $nosotros->imagen_1) : 'https://picsum.photos/400/400?random=1' }}" alt="Industrial Equipment" class="w-full h-full object-cover">
+                <img src="{{ isset($nosotros) && $nosotros->imagen_1 && file_exists(public_path('storage/' . $nosotros->imagen_1)) ? asset('storage/' . $nosotros->imagen_1) : 'https://picsum.photos/400/400?random=1' }}" alt="Industrial Equipment" class="w-full h-full object-cover">
             </div>
             <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-sm mt-8">
-                <img src="{{ isset($nosotros) && $nosotros->imagen_2 ? asset('storage/' . $nosotros->imagen_2) : 'https://picsum.photos/400/400?random=2' }}" alt="Production Line" class="w-full h-full object-cover">
+                <img src="{{ isset($nosotros) && $nosotros->imagen_2 && file_exists(public_path('storage/' . $nosotros->imagen_2)) ? asset('storage/' . $nosotros->imagen_2) : 'https://picsum.photos/400/400?random=2' }}" alt="Production Line" class="w-full h-full object-cover">
             </div>
             <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-sm -mt-8">
-                <img src="{{ isset($nosotros) && $nosotros->imagen_3 ? asset('storage/' . $nosotros->imagen_3) : 'https://picsum.photos/400/400?random=3' }}" alt="Technical Assembly" class="w-full h-full object-cover">
+                <img src="{{ isset($nosotros) && $nosotros->imagen_3 && file_exists(public_path('storage/' . $nosotros->imagen_3)) ? asset('storage/' . $nosotros->imagen_3) : 'https://picsum.photos/400/400?random=3' }}" alt="Technical Assembly" class="w-full h-full object-cover">
             </div>
             <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-sm">
-                <img src="{{ isset($nosotros) && $nosotros->imagen_4 ? asset('storage/' . $nosotros->imagen_4) : 'https://picsum.photos/400/400?random=4' }}" alt="Control System" class="w-full h-full object-cover">
+                <img src="{{ isset($nosotros) && $nosotros->imagen_4 && file_exists(public_path('storage/' . $nosotros->imagen_4)) ? asset('storage/' . $nosotros->imagen_4) : 'https://picsum.photos/400/400?random=4' }}" alt="Control System" class="w-full h-full object-cover">
             </div>
         </div>
     </section>
@@ -108,7 +108,7 @@
     <!-- Talent/Team Section -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1 relative rounded-2xl overflow-hidden border-8 border-slate-200 shadow-2xl">
-            <img src="{{ isset($nosotros) && $nosotros->imagen_talento ? asset('storage/' . $nosotros->imagen_talento) : 'https://picsum.photos/600/400?random=5' }}" alt="Equipo Técnico" class="w-full h-auto object-cover hover:scale-102 transition-transform duration-500">
+            <img src="{{ isset($nosotros) && $nosotros->imagen_talento && file_exists(public_path('storage/' . $nosotros->imagen_talento)) ? asset('storage/' . $nosotros->imagen_talento) : 'https://picsum.photos/600/400?random=5' }}" alt="Equipo Técnico" class="w-full h-auto object-cover hover:scale-102 transition-transform duration-500">
         </div>
 
         <div class="order-1 lg:order-2 space-y-6">

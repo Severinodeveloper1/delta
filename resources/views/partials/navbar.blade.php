@@ -81,17 +81,6 @@
                 class="block px-3 py-2 rounded-md text-base font-medium {{ Route::is('contacto') ? 'text-accent bg-slate-50' : 'text-slate-600 hover:bg-slate-50 hover:text-primary' }}">
                 Contacto
             </a>
-            @auth
-                <a href="/admin"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary text-center">
-                    Panel Admin
-                </a>
-            @else
-                <a href="{{ route('login') }}"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 text-center hover:bg-slate-50">
-                    Log In
-                </a>
-            @endauth
         </div>
     </div>
 </nav>
