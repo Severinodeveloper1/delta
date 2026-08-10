@@ -22,7 +22,7 @@
             <!-- Main Image Zoom container -->
             <div id="mainGallery" class="relative aspect-video rounded-xl bg-slate-50 border border-slate-200 overflow-hidden group cursor-crosshair">
                 @if($firstImagen && $firstImagen !== 'no-image.png' && file_exists(public_path('storage/' . $firstImagen)))
-                    <img id="mainImage" src="{{ asset('storage/' . $firstImagen) }}" alt="{{ $product->nombre }}" class="w-full h-full object-cover transition-transform duration-500 origin-center">
+                    <img id="mainImage" src="{{ asset('storage/' . $firstImagen) }}" alt="{{ $product->nombre }}" class="w-full h-full object-contain transition-transform duration-500 origin-center">
                 @else
                     <div class="w-full h-full flex items-center justify-center bg-slate-200 text-slate-300">
                         <i class="fa-solid fa-box text-8xl"></i>
@@ -44,7 +44,7 @@
                     @foreach($imagenes as $index => $img)
                         @if(file_exists(public_path('storage/' . $img)))
                             <button type="button" class="thumb-item aspect-square rounded-lg border overflow-hidden transition-all {{ $index === 0 ? 'border-accent ring-1 ring-accent' : 'border-slate-200 hover:border-slate-300' }}" data-src="{{ asset('storage/' . $img) }}">
-                                <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" class="w-full h-full object-cover">
+                                <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" class="w-full h-full object-contain">
                             </button>
                         @endif
                     @endforeach
@@ -115,6 +115,19 @@
 
     </div>
 
+    <!-- Detailed Description Section -->
+    @if($product->desripcion_detallada)
+        <section class="pt-10 border-t border-slate-200 space-y-4">
+            <div class="space-y-1">
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Descripción Completa</span>
+                <h2 class="text-2xl font-black text-primary">Información General del Equipo</h2>
+            </div>
+            <div class="prose max-w-none text-slate-600 leading-relaxed bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                {!! $product->desripcion_detallada !!}
+            </div>
+        </section>
+    @endif
+
     <!-- Specifications HTML table -->
     <section class="pt-10 border-t border-slate-200 space-y-4">
         <div class="space-y-1">
@@ -135,12 +148,15 @@
 
     <!-- Documents PDF Module -->
     @php
-        $ficha = is_array($product->ficha_tecnica) ? $product->ficha_tecnica : json_decode($product->ficha_tecnica, true);
-        // In Voyager/Filament, file lists are stored with paths, extract download link
         $urlFicha = null;
-        if (!empty($ficha)) {
-            // Check if it's formatted as standard Filament file attachment string, or json array
-            $filePath = $ficha[0]['download_link'] ?? $ficha[0] ?? null;
+        if (!empty($product->ficha_tecnica)) {
+            $fichaData = $product->ficha_tecnica;
+            $filePath = null;
+            if (is_array($fichaData)) {
+                $filePath = $fichaData[0]['download_link'] ?? $fichaData[0] ?? null;
+            } elseif (is_string($fichaData)) {
+                $filePath = $fichaData;
+            }
             if ($filePath) {
                 $urlFicha = asset('storage/' . str_replace('\\', '/', $filePath));
             }
@@ -188,7 +204,7 @@
                 <div><strong>Categoría:</strong> <span class="text-slate-600">{{ $product->taxonomy->nombre ?? 'N/A' }}</span></div>
             </div>
 
-            <form action="{{ route('cotizacion.enviar') }}" method="POST" class="space-y-4">
+            <form id="formCotizacion" action="{{ route('cotizacion.enviar') }}" method="POST" class="space-y-4">
                 @csrf
                 <input type="hidden" name="producto" value="{{ $product->nombre }}">
                 <input type="hidden" name="precio" value="{{ $product->precio_referencial }}">
@@ -226,7 +242,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-accent text-white font-bold text-sm tracking-wider uppercase transition-all rounded shadow-md">
+                    <button type="submit" id="btnEnviarCotizacion" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-accent text-white font-bold text-sm tracking-wider uppercase transition-all rounded shadow-md">
                         Enviar Solicitud
                     </button>
                 </div>
@@ -290,6 +306,80 @@
             document.body.classList.remove('overflow-hidden');
         }
     }
+
+    // Capture and submit the quote request form via AJAX (preventing Direct JSON Redirect)
+    document.addEventListener('DOMContentLoaded', function () {
+        const formCotizacion = document.getElementById('formCotizacion');
+        const btnEnviar = document.getElementById('btnEnviarCotizacion');
+        
+        if (formCotizacion) {
+            formCotizacion.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                if (btnEnviar) {
+                    btnEnviar.disabled = true;
+                    btnEnviar.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando...';
+                }
+                
+                const formData = new FormData(formCotizacion);
+                
+                fetch(formCotizacion.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (response.status === 429) {
+                        throw new Error('Demasiadas solicitudes. Por favor, espere un minuto antes de intentar de nuevo.');
+                    }
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.message || 'Error en el servidor al enviar la solicitud.');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (btnEnviar) {
+                        btnEnviar.disabled = false;
+                        btnEnviar.innerHTML = 'Enviar Solicitud';
+                    }
+                    
+                    if (data.success) {
+                        closeQuoteModal();
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Solicitud Enviada!',
+                            text: data.message,
+                            confirmButtonColor: '#f97316'
+                        });
+                        formCotizacion.reset();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.message || 'Hubo un error al procesar su solicitud.',
+                            confirmButtonColor: '#0f172a'
+                        });
+                    }
+                })
+                .catch(error => {
+                    if (btnEnviar) {
+                        btnEnviar.disabled = false;
+                        btnEnviar.innerHTML = 'Enviar Solicitud';
+                    }
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message || 'No se pudo conectar con el servidor. Verifique su conexión.',
+                        confirmButtonColor: '#0f172a'
+                    });
+                });
+            });
+        }
+    });
 </script>
 
 <style>

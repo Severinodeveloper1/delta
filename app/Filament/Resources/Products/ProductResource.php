@@ -7,6 +7,7 @@ use App\Filament\Resources\Products\Pages\EditProduct;
 use App\Filament\Resources\Products\Pages\ListProducts;
 use App\Models\Product;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Filament\Forms\Components\TextInput;
@@ -42,40 +43,46 @@ class ProductResource extends Resource
     {
         return $schema
             ->components([
-                TextInput::make('nombre')
-                    ->label('Nombre del Equipo')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $operation, $state, callable $set) =>
-                        $operation === 'create' ? $set('slug', Str::slug($state)) : null
-                    ),
-                TextInput::make('slug')
-                    ->label('URL Amigable (Slug)')
-                    ->required()
-                    ->unique(Product::class, 'slug', ignoreRecord: true)
-                    ->maxLength(255),
-                Select::make('taxonomy_id')
-                    ->label('Categoría / Sistema')
-                    ->relationship('taxonomy', 'nombre')
-                    ->required()
-                    ->preload()
-                    ->searchable(),
-                Select::make('brand_id')
-                    ->label('Fabricante / Marca')
-                    ->relationship('brand', 'nombre')
-                    ->required()
-                    ->preload()
-                    ->searchable(),
-                TextInput::make('precio_referencial')
-                    ->label('Precio Referencial (USD)')
-                    ->numeric()
-                    ->required()
-                    ->prefix('$'),
-                Textarea::make('descripcion_corta')
-                    ->label('Descripción Corta')
-                    ->rows(2)
-                    ->maxLength(500),
+                Grid::make(2)
+                    ->components([
+                        TextInput::make('nombre')
+                            ->label('Nombre del Equipo')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(
+                                fn(string $operation, $state, callable $set) =>
+                                $operation === 'create' ? $set('slug', Str::slug($state)) : null
+                            ),
+                        TextInput::make('slug')
+                            ->label('URL Amigable (Slug)')
+                            ->required()
+                            ->unique(Product::class, 'slug', ignoreRecord: true)
+                            ->maxLength(255),
+                        Select::make('taxonomy_id')
+                            ->label('Categoría / Sistema')
+                            ->relationship('taxonomy', 'nombre')
+                            ->required()
+                            ->preload()
+                            ->searchable(),
+                        Select::make('brand_id')
+                            ->label('Fabricante / Marca')
+                            ->relationship('brand', 'nombre')
+                            ->required()
+                            ->preload()
+                            ->searchable(),
+                        TextInput::make('precio_referencial')
+                            ->label('Precio Referencial (USD)')
+                            ->numeric()
+                            ->required()
+                            ->prefix('$'),
+                        Textarea::make('descripcion_corta')
+                            ->label('Descripción Corta')
+                            ->rows(2)
+                            ->maxLength(500),
+                    ]),
+
+
                 RichEditor::make('desripcion_detallada')
                     ->label('Descripción Detallada'),
                 RichEditor::make('especificaciones')
@@ -100,7 +107,7 @@ class ProductResource extends Resource
                 Toggle::make('activo')
                     ->label('Activo / Visible')
                     ->default(true),
-            ]);
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
