@@ -1,0 +1,353 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e2e2e5",
+                    "secondary-fixed": "#ffdbcc",
+                    "primary-fixed": "#dde1ff",
+                    "tertiary": "#00505c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004e5a",
+                    "on-tertiary-fixed": "#001f25",
+                    "on-surface": "#1a1c1e",
+                    "primary-fixed-dim": "#b9c3ff",
+                    "on-surface-variant": "#434657",
+                    "surface-variant": "#e2e2e5",
+                    "outline": "#747688",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#87eaff",
+                    "on-background": "#1a1c1e",
+                    "secondary-container": "#fe6b00",
+                    "on-secondary-container": "#572000",
+                    "inverse-on-surface": "#f0f0f3",
+                    "background": "#f9f9fc",
+                    "on-primary-fixed": "#001257",
+                    "secondary": "#a04100",
+                    "secondary-fixed-dim": "#ffb693",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeef0",
+                    "surface-bright": "#f9f9fc",
+                    "tertiary-container": "#006a7a",
+                    "outline-variant": "#c4c5da",
+                    "tertiary-fixed-dim": "#00daf8",
+                    "surface-dim": "#dadadc",
+                    "inverse-primary": "#b9c3ff",
+                    "primary": "#0035c5",
+                    "on-secondary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e8e8ea",
+                    "on-secondary-fixed": "#351000",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3133",
+                    "on-primary-fixed-variant": "#0033c0",
+                    "surface-tint": "#0046fa",
+                    "primary-container": "#0047ff",
+                    "surface-container-low": "#f3f3f6",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9f9fc",
+                    "tertiary-fixed": "#a5eeff",
+                    "on-primary-container": "#d4d9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Lexend"],
+                    "body-lg": ["Lexend"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Lexend"],
+                    "caption": ["Lexend"],
+                    "display-lg-mobile": ["Lexend"],
+                    "display-lg": ["Lexend"],
+                    "body-md": ["Lexend"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .zebra-list div:nth-child(even) {
+            background-color: #f3f3f6;
+        }
+        .spec-table tr:nth-child(even) {
+            background-color: #f3f3f6;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg font-black tracking-tighter text-primary">HAMMER</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary py-1" href="#">Equipos</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 py-1" href="#">Insumos</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 py-1" href="#">Soporte</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 bg-primary text-on-primary font-label-md text-label-md rounded hover:opacity-90 transition-all active:scale-95">
+                    Solicitar Asesor
+                </button>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-gutter py-margin-desktop space-y-24">
+<!-- Hero Section (SCREEN_14) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Gallery -->
+<div class="lg:col-span-7 space-y-6">
+<div class="relative aspect-[4/3] bg-surface-container-low border border-outline-variant overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-500" data-alt="A professional heavy-duty industrial UV printer, the HAMMER UV-2000 Pro" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGsHNWvGqBIjQ2hGMdM3u0scdgMst5CBzGEuU1ov0sKhYW56rq6ZBmuc2GmUbJQR-iNfS9v5RqW-hqIMorV8kPnO4g3C6IC752sspP9oMDlvS6vNaTKJoiB9xcrjjXVpWWTyhQrTQzYq62CwgJQqCfntlVE2NLyf9DH4tE7ngNEWbJ2vFrPer2mEEwUWgw6N9ZfRSr61NhE_Exua_y_JXPqaPXbs0UK13At-PQ4SOzEWRVEdIcSkoXlV_BagDsSaT8AwKfmnkq1Q" style="transform-origin: 90.03% 95.7298%;">
+<div class="absolute bottom-6 left-6 flex items-center gap-3 bg-secondary-container text-on-secondary-container px-4 py-3 shadow-lg cursor-pointer hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md leading-none">EQUIPO EN USO</span>
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Video Demostrativo</span>
+</div>
+</div>
+<div class="absolute top-6 right-6 bg-surface-container-lowest/80 backdrop-blur p-2 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-4">
+<div class="aspect-square border-2 border-primary overflow-hidden cursor-pointer"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8J2hJSwntoenW2laOqP_EW4fSGsPzdkwfEEuTJld4ryZFGCZqfPkWZ14H3x6biEh8sSQkkzS5SN0WaS6K9DF-sMkapPVMgTeYiRzv3muEwqDKAaXa658z6bwmXeyLHwG4-3dCK1wil5i7qiBTXRJxK_KgghfQuXwzqt9yFMRt79wk_vlASQA2DmBhZ8L1LU5Il1kIU4ljxiuDRpxrkXiH5bn2lZj1Ec-mUh4bPjEN09bxNXqCksClcM2ZkORBsuC-vE7MzG3Jmw"></div>
+<div class="aspect-square border border-outline-variant overflow-hidden cursor-pointer hover:border-primary transition-colors"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ADJohZDYnOChRTTdZto5Db_HsAvjntB_hszAI4CV4t7Z6rBYPYNSj8DZP-uRXUCffgZ227wcX9Ex1RuM5K7Wypdp6ss_Nvx72qK3BFbA-YOC9YPKSOol_p_c4oasFsLHgf4COZujF2fqKm59Ie3FprZM1KUlX37S1sUFsHhPCgfT_-C6e3swT7Vc-ajIbe2LEd2hr0_dnpa8hg7tEr-RlgJrmsNZIfhTDKQQexO5Ni9OKARCMZpNi22NHNcbpYgMytUR_Nl30g"></div>
+<div class="aspect-square border border-outline-variant overflow-hidden cursor-pointer hover:border-primary transition-colors"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdKxYPrPP61xTgsK9t1Ibk14n_ERFeZ-n7DIBteT9p9RQoY2MU_azEEYkZ5hM9q-ub6cSpQgfIcRIxrEm9vqOWs1-jCno62hR-8wb_jqKtmj82mC6opg4lxZrq9e3e3uIl4VXDL68o8NCPLxFax3MtXpZusULMz19Iv1AXtY5atWnrelTPqGyJL1UeTyjDRGSAfb8G97EVC_4LdKcbPwr8l8mc-I20jvkxPKclC9_go3XLrjsd8WSRHmsK_Vq585m2Hcpp9QnZcg"></div>
+<div class="aspect-square border border-outline-variant overflow-hidden cursor-pointer hover:border-primary transition-colors"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGWYVnRt2JQtjCxvRLy8jEErohIpgWxfj_QawQoCoQ8rY4GL14UEG874vEoZc0DyBBl6S4C27gv3mQu5rgQzs9e5AbX0f83p3EFO8kqBNMaReeCDmDnH1X6j2NXL4sn60QSqJ3jD2nhDymoPRLsGWi6pyLoU96ugfCix8nt7AeYvJRS_ZCROFnwHk_8AFZR4O95whCMn6g-wFcsjV_oQrREsge0330WhroXYS04BD0XvuNZ64oUBE0H8q53ZrlsCK4dUX6SbLONA"></div>
+<div class="aspect-square border border-outline-variant bg-surface-container-high flex flex-col items-center justify-center cursor-pointer hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-[10px] font-bold">VER TODAS</span>
+</div>
+</div>
+</div>
+<!-- Details & Pricing -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="space-y-2 mb-6">
+<span class="font-label-md text-label-md text-secondary-container font-bold tracking-[0.2em] uppercase">Serie Industrial Pro</span>
+<h1 class="font-headline-lg text-headline-lg text-on-background">HAMMER UV-2000 Pro</h1>
+<div class="flex items-center gap-2">
+<div class="flex">
+<span class="material-symbols-outlined text-secondary-container scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary-container scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary-container scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary-container scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary-container scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-caption font-caption text-outline">Certificación ISO 9001:2015</span>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 border-l-4 border-primary pl-4">
+                    Diseñada para producción ininterrumpida 24/7. Tecnología de curado UV LED de alta velocidad con precisión micrónica para sustratos rígidos y flexibles.
+                </p>
+<!-- Pricing & CTA Block -->
+<div class="bg-surface-container p-8 border-2 border-secondary-container mb-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<svg class="w-full h-full fill-current" viewBox="0 0 100 100"><path d="M0 0 L100 100 M-10 10 L10 -10 M90 110 L110 90" stroke="currentColor" stroke-width="10"></path></svg>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold uppercase tracking-wider block mb-1">Precio Referencial</span>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-headline-lg font-black text-on-surface">$45,900</span>
+<span class="font-label-md text-label-md text-outline">USD + IGV</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant italic mb-6">
+                        * Sujeto a evaluación, contacte a un asesor para configuración final y leasing.
+                    </p>
+<button class="w-full bg-secondary-container text-on-secondary-container font-headline-md text-headline-md py-6 px-8 rounded shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 active:scale-95">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+                        Solicitar Cotización
+                    </button>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="flex flex-col items-center gap-1 p-3 bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-bold uppercase text-center">2 Años Garantía</span>
+</div>
+<div class="flex flex-col items-center gap-1 p-3 bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+<span class="text-[10px] font-bold uppercase text-center">Soporte 24/7</span>
+</div>
+<div class="flex flex-col items-center gap-1 p-3 bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="text-[10px] font-bold uppercase text-center">Instalación Global</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs Section (SCREEN_10) -->
+<section class="space-y-8">
+<div class="flex items-end justify-between border-b-2 border-outline-variant pb-4">
+<div>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Profundidad Técnica</span>
+<h2 class="font-headline-lg text-headline-lg">Ficha Técnica Detallada</h2>
+</div>
+
+</div>
+<div class="overflow-x-auto">
+<table class="w-full spec-table">
+<thead>
+<tr class="bg-surface-container-high text-left">
+<th class="p-4 font-label-md border border-outline-variant">Categoría</th>
+<th class="p-4 font-label-md border border-outline-variant">Especificación</th>
+<th class="p-4 font-label-md border border-outline-variant text-right">Valor / Detalle</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface">
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Producción</td>
+<td class="p-4 border border-outline-variant">Velocidad de impresión</td>
+<td class="p-4 border border-outline-variant text-right">Hasta 120 m²/h (Modo Borrador)</td>
+</tr>
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Calidad</td>
+<td class="p-4 border border-outline-variant">Resolución máxima</td>
+<td class="p-4 border border-outline-variant text-right">2400 x 1200 DPI</td>
+</tr>
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Cabezales</td>
+<td class="p-4 border border-outline-variant">Configuración de inyectores</td>
+<td class="p-4 border border-outline-variant text-right">Ricoh Gen6 x 4 (CMYK + W + V)</td>
+</tr>
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Sustratos</td>
+<td class="p-4 border border-outline-variant">Grosor máximo</td>
+<td class="p-4 border border-outline-variant text-right">100 mm (Ajuste automático)</td>
+</tr>
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Físico</td>
+<td class="p-4 border border-outline-variant">Dimensiones del equipo</td>
+<td class="p-4 border border-outline-variant text-right">4.8m x 2.1m x 1.4m</td>
+</tr>
+<tr>
+<td class="p-4 border border-outline-variant font-bold">Energía</td>
+<td class="p-4 border border-outline-variant">Requerimiento eléctrico</td>
+<td class="p-4 border border-outline-variant text-right">220V / 30A Trifásico</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Documentation & Features (SCREEN_10) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- PDF Module -->
+<div class="md:col-span-1 bg-primary text-on-primary p-8 flex flex-col justify-between min-h-[320px]">
+<div>
+<span class="material-symbols-outlined text-[48px] mb-4" data-icon="picture_as_pdf">picture_as_pdf</span>
+<h3 class="font-headline-md text-headline-md mb-2">Documentación Técnica</h3>
+<p class="font-body-md opacity-80 mb-6">Acceda a los manuales de instalación, seguridad y guías de mantenimiento preventivo.</p>
+</div>
+<button class="w-full bg-on-primary text-primary font-label-md py-4 rounded font-bold hover:bg-primary-fixed transition-colors">
+                    Ver Repositorio PDF
+                </button>
+</div>
+<!-- Feature Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-8 group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Estructura Reforzada</h3>
+<p class="font-body-md text-on-surface-variant">Chasis de acero industrial de una sola pieza para eliminar vibraciones en altas velocidades, garantizando una vida útil de +10 años.</p>
+<div class="mt-8 pt-6 border-t border-outline-variant/30 flex items-center gap-2 text-primary font-label-md">
+<span class="">Saber más</span>
+<span class="material-symbols-outlined scale-75" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Feature Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-8 group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-tertiary-container/20 flex items-center justify-center mb-6 text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Sostenibilidad Activa</h3>
+<p class="font-body-md text-on-surface-variant">Sistema de filtración de COVs integrado y tintas con certificación Greenguard Gold, reduciendo el impacto ambiental en su taller.</p>
+<div class="mt-8 pt-6 border-t border-outline-variant/30 flex items-center gap-2 text-primary font-label-md">
+<span class="">Saber más</span>
+<span class="material-symbols-outlined scale-75" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (SCREEN_14) -->
+<footer class="bg-surface-container-highest border-t-4 border-secondary mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-margin-desktop max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<span class="font-headline-md text-headline-md font-bold text-on-background block mb-4">HAMMER</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Líderes en impresión industrial de alta precisión para el mercado global.</p>
+</div>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface block mb-4 uppercase">Documentación</span>
+<ul class="space-y-2">
+<li class=""><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Manuales Técnicos</a></li>
+<li class=""><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Servicio Post-venta</a></li>
+<li class=""><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Certificaciones</a></li>
+</ul>
+</div>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface block mb-4 uppercase">Compañía</span>
+<ul class="space-y-2">
+<li class=""><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Red de Distribuidores</a></li>
+<li class=""><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contacto Directo</a></li>
+</ul>
+</div>
+<div class="bg-primary/5 p-6 border border-primary/20">
+<span class="font-label-md text-label-md font-bold text-primary block mb-2 uppercase">Canal de Ventas</span>
+<p class="text-[20px] font-black text-on-surface mb-4">+51 1 500 8000</p>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded">Agendar Visita</button>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter py-8 border-t border-outline-variant/30 text-center">
+<p class="font-label-md text-label-md text-outline">© 2024 HAMMER Industrial Printing Equipment. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for gallery zoom effect
+        const galleryImage = document.querySelector('img[data-alt*="HAMMER UV-2000 Pro"]');
+        if (galleryImage) {
+            galleryImage.parentElement.addEventListener('mousemove', (e) => {
+                const rect = galleryImage.parentElement.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                galleryImage.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                galleryImage.classList.add('scale-150');
+            });
+            galleryImage.parentElement.addEventListener('mouseleave', () => {
+                galleryImage.classList.remove('scale-150');
+            });
+        }
+    </script>
+
+
+</body></html>

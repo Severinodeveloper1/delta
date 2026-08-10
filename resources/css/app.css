@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +7,24 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    --color-primary: #0f172a;
+    --color-primary-light: #1e293b;
+    --color-accent: #f97316;
+    --color-accent-dark: #ea580c;
+    --color-tertiary: #0d9488;
+    --color-bg-light: #f8fafc;
+    --color-bg-dark: #090d16;
+    --color-surface-container: #f1f5f9;
+    --color-surface-card: #ffffff;
+    
+    --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
 }
+
+.industrial-grid {
+    background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+

@@ -1,0 +1,434 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e2e2e5",
+                        "secondary-fixed": "#ffdbcc",
+                        "primary-fixed": "#dde1ff",
+                        "tertiary": "#00505c",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004e5a",
+                        "on-tertiary-fixed": "#001f25",
+                        "on-surface": "#1a1c1e",
+                        "primary-fixed-dim": "#b9c3ff",
+                        "on-surface-variant": "#434657",
+                        "surface-variant": "#e2e2e5",
+                        "outline": "#747688",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#87eaff",
+                        "on-background": "#1a1c1e",
+                        "secondary-container": "#fe6b00",
+                        "on-secondary-container": "#572000",
+                        "inverse-on-surface": "#f0f0f3",
+                        "background": "#f9f9fc",
+                        "on-primary-fixed": "#001257",
+                        "secondary": "#a04100",
+                        "secondary-fixed-dim": "#ffb693",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeeef0",
+                        "surface-bright": "#f9f9fc",
+                        "tertiary-container": "#006a7a",
+                        "outline-variant": "#c4c5da",
+                        "tertiary-fixed-dim": "#00daf8",
+                        "surface-dim": "#dadadc",
+                        "inverse-primary": "#b9c3ff",
+                        "primary": "#0035c5",
+                        "on-secondary-fixed-variant": "#7a3000",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e8e8ea",
+                        "on-secondary-fixed": "#351000",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3133",
+                        "on-primary-fixed-variant": "#0033c0",
+                        "surface-tint": "#0046fa",
+                        "primary-container": "#0047ff",
+                        "surface-container-low": "#f3f3f6",
+                        "on-primary": "#ffffff",
+                        "surface": "#f9f9fc",
+                        "tertiary-fixed": "#a5eeff",
+                        "on-primary-container": "#d4d9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Lexend"],
+                        "body-lg": ["Lexend"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Lexend"],
+                        "caption": ["Lexend"],
+                        "display-lg-mobile": ["Lexend"],
+                        "display-lg": ["Lexend"],
+                        "body-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c5da;
+            border-radius: 10px;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary-fixed" href="#">HAMMER</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors px-3 py-2 rounded-lg" href="#">INICIO</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary px-3 py-2" href="#">PRODUCTOS</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors px-3 py-2 rounded-lg" href="#">TECNOLOGÍA</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors px-3 py-2 rounded-lg" href="#">SOPORTE</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-label-md focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Buscar modelo..." type="text">
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 duration-100">
+                    Solicitar Asesor
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-24 min-h-screen max-w-container-max mx-auto px-gutter pb-margin-desktop">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<nav class="flex items-center gap-2 text-outline mb-4 font-label-md text-caption">
+<a class="hover:text-primary" href="#">DIRECTORIO</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface-variant">PRODUCTOS</span>
+</nav>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Productos</h1>
+<p class="text-on-surface-variant font-body-lg max-w-xl mt-2">Explora nuestra línea de ingeniería avanzada en impresión industrial de alta precisión y velocidad.</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-high rounded-lg">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed-dim opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="font-label-md text-label-md text-tertiary">Resultados cargados instantáneamente</span>
+</div>
+</div>
+<div class="flex flex-col md:grid md:grid-cols-12 gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="md:col-span-3 space-y-8">
+<section>
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-widest mb-4">Categorías</h3>
+<div class="space-y-2">
+<label class="flex items-center justify-between group cursor-pointer p-2 rounded hover:bg-surface-container transition-colors">
+<span class="font-body-md text-on-surface group-hover:text-primary">Textile</span>
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+</label>
+<label class="flex items-center justify-between group cursor-pointer p-2 rounded hover:bg-surface-container transition-colors">
+<span class="font-body-md text-on-surface group-hover:text-primary">UV</span>
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+</label>
+<label class="flex items-center justify-between group cursor-pointer p-2 rounded hover:bg-surface-container transition-colors">
+<span class="font-body-md text-on-surface group-hover:text-primary">Large Format</span>
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+</label>
+</div>
+</section>
+<section>
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-widest mb-4">Marca</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="text-primary focus:ring-primary" name="brand" type="radio">
+<span class="font-body-md text-on-surface">Hammer Core</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="text-primary focus:ring-primary" name="brand" type="radio">
+<span class="font-body-md text-on-surface">Titan Series</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="text-primary focus:ring-primary" name="brand" type="radio">
+<span class="font-body-md text-on-surface">PrecisionPro</span>
+</label>
+</div>
+</section>
+<section class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-4">Technical Specs</h3>
+<div class="space-y-4">
+<div>
+<span class="font-label-md text-caption block mb-2">Velocidad (m²/h)</span>
+<input class="w-full accent-primary" type="range">
+<div class="flex justify-between text-caption font-label-md mt-1">
+<span>20</span>
+<span>500+</span>
+</div>
+</div>
+<div>
+<span class="font-label-md text-caption block mb-2">Cabezales</span>
+<select class="w-full bg-white border border-outline-variant rounded p-2 text-label-md outline-none focus:border-primary">
+<option>Todos</option>
+<option>Kyocera</option>
+<option>Ricoh Gen6</option>
+<option>Epson i3200</option>
+</select>
+</div>
+</div>
+</section>
+</aside>
+<!-- Product Grid -->
+<div class="md:col-span-9">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Product Card 1 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="A high-performance industrial textile printing machine with a sleek metallic silver and carbon black finish. The equipment is positioned in a brightly lit, sterile manufacturing environment with cool-toned blue and white lighting. Large rollers and intricate mechanical parts are visible, suggesting precision engineering. The overall aesthetic is professional, modern, and high-tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc-xWB-X2kH8AW1FoinxEAqTXa9L-wCm-hy4WsMZyurHxB1gpUosvpK7EpiS54ykmFUDv1rwo-6CywINESu0Z1Oh4MPYqLlT_ekwVJU4e6fbIAWhb3_pF6kAYVsBc17ZQeDPH7AcWK0xC79hWgYS8iT05YWTpcd3aRSCGVJTsXJVsD-GSJXPQwkt6WzzutFWzZnslxToZK5WKegEdWaIo6UhBjCozmGIFjP3X_ovF9gEanJ8v4zOPd8j3bLVzMQuvc7SEemrgnVA">
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary text-on-tertiary px-3 py-1 font-label-md text-caption rounded">TEXTILE</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">TITAN SERIES</span>
+<span class="font-label-md text-caption text-secondary font-bold">320m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER TX-3200</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="settings_input_component" title="Kyocera Heads">settings_input_component</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="An industrial UV flatbed printer showcasing a heavy-duty vacuum table and a moving carriage system. The machine is designed with bold orange accents and a dark grey industrial coating. The setting is a modern fabrication laboratory with overhead LED lighting creating sharp, clean shadows. The mood is powerful and efficient, reflecting a high-speed commercial production capability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYuvEvfD5p7A9PvSwDfGxQ49sQvqu738OBQZYptwnSMNvVWKsvlWIpWZKItXufwZhP4bPp2LowaO3sOlD6NhgYepi6ec_irGDDPwxtQXG4xEZbCXNwfN-EtowLjWvSYkVn6CQ43vg7EVciTPlucG_UAXcjGzC_LlNvoGy1kB6A6Hh6mXsBlYAwwh0TEo0xuwkF1jViXglYP02s7_oXrW0w08oeAyoLfQwlJHADSFLayFD21hOze266Saa-OMDmCu8cHBnCxHO-Q">
+<div class="absolute top-4 left-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-label-md text-caption rounded">UV</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">UV FLATBED</span>
+<span class="font-label-md text-caption text-secondary font-bold">120m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER UV-2513</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="memory" title="Gen6 Heads">memory</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="A wide-format roll-to-roll printer in a spacious, contemporary workshop. The printer features a high-visibility control panel and robust chassis in primary blue and white. The background is a clean, minimal industrial space with white walls and polished concrete floors. The composition emphasizes the large-scale capacity and technological sophistication of the equipment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb8YrUEwTBuMX2Hy5wCFeTjoi03-zzsrF6YHVojntzXbegRq4wIKh_y1KoOz3yMiURXmD2CszrZJumvYWbA1RWBHl9UawvX0iFRGhwpueXoqB-P5SQFHFbzFaYYWWbiJe-daduPft64UgFeWviUWNqoDIXwBHaHvAKtTJABd3t096785Uj_xydHiPIfavJlmJDHl6HDF0Kv0wY-4PlnTwcSwxW20WnVp6PxENyI0iWUhpYmDdM_MzRRCVYlEz8fkgp1R8KUjFI2Q">
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-on-primary px-3 py-1 font-label-md text-caption rounded">LARGE FORMAT</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">PRECISIONPRO</span>
+<span class="font-label-md text-caption text-secondary font-bold">450m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER LF-5000</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="high_speed" title="Dual Row">speed</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="Macro shot of a high-precision printing head from a commercial printer. The focus is on the fine nozzles and intricate electrical wiring, set against a dark, tech-oriented backdrop with subtle cyan light highlights. The image conveys extreme precision and advanced manufacturing technology, utilizing a high-contrast industrial aesthetic characteristic of the Hammer brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmZKu0hT4CAr97YOMWBusk_T85t7oBe5MnWEuiAD8HAuze9DWWyontukU26S0WQYZB4sOO8I6c_OK-cq6XCn3IsMV4Hj88aawgP0b5xMmB54dHJro6BEr5EaJoOPvC-ZBzQJ8a7itcp14Ad_rBf10AivIiCzNSU0V3niqd6577VdLsEUQ1Uw_2u_7HaNB_j7O05BtrhQciz7s2O4yWcyZGq770c37K-4bJ0vaaMP4k6Wekf849mb0SyH1VdN-GsOL5tKcrHpOZSQ">
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary text-on-tertiary px-3 py-1 font-label-md text-caption rounded">TEXTILE</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">CORE SERIES</span>
+<span class="font-label-md text-caption text-secondary font-bold">180m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER TX-MINI</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="precision_manufacturing" title="Epson i3200">precision_manufacturing</span>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="A specialized industrial printer designed for 3D textures and heavy-duty substrates, displayed in an architectural studio setting. The machine is finished in matte black with signal orange safety highlights. Soft natural light filters into the room, creating a premium commercial feel. The image emphasizes the machine's ability to handle complex materials with industrial efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBir3D16QaLMf-K-hDp4pSH5pNB2yuBrRcXh6U0Bcuj-ddd2NGmkJT1m8LOsPfzy_xzLxlkDP2zzyq9XduWUkLapVNVIEaFpSZCUhrtwyIRzgoAkR16aKZ-6Bid0xt5J0-35LucyNOkpQEYZViZvBxgIeolnCUlTin69c5KvaXRU7_GUMO7EPUld7j-tgmuHPfO8c2wi-3HyGZit8nNrJgCskcSfyEw9zM05-JP6R20FvxOvMJqlFBb0MSVLaMvBjGJspUV3195ig">
+<div class="absolute top-4 left-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-label-md text-caption rounded">UV</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">HYBRID SERIES</span>
+<span class="font-label-md text-caption text-secondary font-bold">95m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER HY-3000</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="layers" title="Texture Engine">layers</span>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="product-card bg-surface-container-lowest border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300">
+<div class="aspect-square bg-surface-container-high overflow-hidden relative">
+<img class="product-image w-full h-full object-cover transition-transform duration-500" data-alt="Digital representation of an ultra-high-speed printing process using vibrant primary blue and cyan light streaks against a dark background. The scene depicts motion and technological velocity, evoking the core brand identity of Hammer Industrial Printing. The lighting is high-contrast and dramatic, emphasizing speed, precision, and the future of digital manufacturing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlsmHGbe-Z28Jz7tccYdxMS_hKhYzxc1DNfyh7Woyk9egf4MCDiuCTz-xn_WB12AziSEEZFPRzZlNJtVf2sNn-STY9fCbJ55geS4Canlzl-i1ssQWWXSvO8Rc1KF5QHj6cLd5JDUWiUn3_9bLlZ3lrRK8FSFCiwPupKR4vB7HL0JIVEoyst_3jcKWBcPV8PXoAiCYs1dyK3VbcPun4MgsOBkZRjJNpR33rL6r6cK_id6SK0ABOHpwTzGwwYB-V3ZBeXa1eipnetg">
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-on-primary px-3 py-1 font-label-md text-caption rounded">INDUSTRIAL</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-caption text-outline">EXTREME SERIES</span>
+<span class="font-label-md text-caption text-secondary font-bold">800m²/h</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">HAMMER ULTIMATE X</h2>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md group-hover:underline underline-offset-4">
+                                    Ver Detalles
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<span class="material-symbols-outlined text-outline" data-icon="bolt" title="Max Output">bolt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex flex-col items-center gap-6">
+<button class="px-8 py-3 bg-surface-container-high border border-outline-variant font-label-md text-label-md hover:bg-surface-container transition-colors active:scale-95">
+                        Cargar más modelos
+                    </button>
+<p class="font-label-md text-caption text-outline">Mostrando 6 de 42 equipos industriales</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-on-background border-t-4 border-secondary mt-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-6">
+<span class="font-headline-md text-headline-md font-bold text-on-background dark:text-surface-bright">HAMMER</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Líderes globales en tecnología de impresión industrial de gran formato.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="mail">mail</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="location_on">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-6 uppercase">Recursos</h4>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Manuales Técnicos</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Servicio Post-venta</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Certificaciones</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-6 uppercase">Empresa</h4>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Red de Distribuidores</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Contacto Directo</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors underline-offset-4 hover:underline" href="#">Carreras</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-6 uppercase">Newsletter Industrial</h4>
+<p class="font-caption text-caption text-on-surface-variant mb-4">Recibe actualizaciones sobre lanzamientos y firmware.</p>
+<form class="flex flex-col gap-2">
+<input class="bg-surface-container border border-outline-variant rounded p-3 text-label-md focus:ring-2 focus:ring-primary outline-none" placeholder="Email corporativo" type="email">
+<button class="bg-secondary text-on-secondary font-label-md text-label-md py-3 rounded hover:bg-secondary-container transition-all">Suscribirse</button>
+</form>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-gutter text-center">
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant">© 2024 HAMMER Industrial Printing Equipment. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Subtle lift or border change handled by Tailwind classes
+            });
+        });
+
+        // Filter interaction (Simulated loading)
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const indicator = document.querySelector('.bg-surface-container-high span.animate-ping');
+                indicator.parentElement.classList.add('scale-110');
+                setTimeout(() => {
+                    indicator.parentElement.classList.remove('scale-110');
+                }, 300);
+            });
+        });
+    </script>
+</body></html>
