@@ -353,7 +353,7 @@
                             icon: 'success',
                             title: '¡Solicitud Enviada!',
                             text: data.message,
-                            confirmButtonColor: '#f97316'
+                            confirmButtonColor: '#0d6efd'
                         });
                         formCotizacion.reset();
                     } else {

@@ -151,7 +151,7 @@
                             icon: 'success',
                             title: '¡Reclamación Enviada!',
                             text: res.msg,
-                            confirmButtonColor: '#f97316'
+                            confirmButtonColor: '#0d6efd'
                         }).then(() => {
                             $('#formReclamo')[0].reset();
                         });
