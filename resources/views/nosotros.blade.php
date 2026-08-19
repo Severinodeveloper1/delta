@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-    
+
     <!-- Trayectoria Section -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
@@ -28,19 +28,19 @@
                     <div class="text-3xl sm:text-4xl font-black text-accent mb-1">
                         {{ $nosotros->anios ?? '10+' }}
                     </div>
-                    <div class="text-[10px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Años de Experiencia</div>
+                    <div class="text-[15px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Años de Experiencia</div>
                 </div>
                 <div class="p-5 bg-white border border-slate-200 rounded-lg text-center shadow-sm">
                     <div class="text-3xl sm:text-4xl font-black text-accent mb-1">
                         {{ $nosotros->patentes ?? '500+' }}
                     </div>
-                    <div class="text-[10px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Equipos Vendidos</div>
+                    <div class="text-[15px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Equipos Vendidos</div>
                 </div>
                 <div class="p-5 bg-white border border-slate-200 rounded-lg text-center shadow-sm">
                     <div class="text-3xl sm:text-4xl font-black text-accent mb-1">
                         {{ $nosotros->paises ?? '24/7' }}
                     </div>
-                    <div class="text-[10px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Soporte Técnico</div>
+                    <div class="text-[15px] font-mono font-semibold text-slate-500 uppercase tracking-wider">Cobertura En Perú</div>
                 </div>
             </div>
         </div>

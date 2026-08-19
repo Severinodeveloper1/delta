@@ -1,9 +1,9 @@
-name: tira-inmobiliaria
+name: delta
 
 services:
   mariadb:
     image: 'mariadb:10.11'
-    container_name: tira-mariadb
+    container_name: delta-mariadb
     restart: unless-stopped
     ports:
       - '${DB_PORT:-3306}:3306'
@@ -12,9 +12,9 @@ services:
       MYSQL_DATABASE: '${DB_DATABASE:-database}'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
     volumes:
-      - tira-mariadb-data:/var/lib/mysql
+      - delta-mariadb-data:/var/lib/mysql
     networks:
-      - tira-network
+      - delta-network
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
@@ -22,7 +22,7 @@ services:
 
   phpmyadmin:
     image: 'phpmyadmin:latest'
-    container_name: tira-phpmyadmin
+    container_name: delta-phpmyadmin
     restart: unless-stopped
     ports:
       - '8080:80'
@@ -32,15 +32,15 @@ services:
       PMA_USER: root
       PMA_PASSWORD: '${DB_PASSWORD:-admin}'
     networks:
-      - tira-network
+      - delta-network
     depends_on:
       mariadb:
         condition: service_healthy
 
 networks:
-  tira-network:
+  delta-network:
     driver: bridge
 
 volumes:
-  tira-mariadb-data:
+  delta-mariadb-data:
     driver: local

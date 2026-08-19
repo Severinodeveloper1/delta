@@ -72,7 +72,7 @@ class ManageAbout extends Page
                                             ->required()
                                             ->maxLength(50),
                                         TextInput::make('paises')
-                                            ->label('Soporte Técnico (ej: 24/7)')
+                                            ->label('Cobertura En Perù')
                                             ->required()
                                             ->maxLength(50),
                                     ]),
